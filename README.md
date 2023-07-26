@@ -15,10 +15,36 @@
 
 为了使用 OpenAI API，你需要从 OpenAI 控制台获取一个 API 密钥, 为防止密钥泄露建议将其设置为环境变量使用：
 
+方式 1. 通过 .env 文件设置
+
+在 JupyterLab 启动目录下创建一个 .env 文件，内容：
+
+```ini
+MY_VAR=hello
+OPENAI_API_KEY=your_api_key
+```
+
+a. 在 JupyterLab 中可以自动读取 .env 文件中的环境变量（变更需要重启 JupyterLab）。
+
+```python
+import os
+print(os.getenv('MY_VAR')) # 输出 hello
+```
+
+b. 也可通过代码加载环境变量
+
+```python
+from dotenv import load_dotenv
+load_dotenv()
+print(os.getenv('MY_VAR')) # 输出 hello
+```
+
+方式 2. 在终端中临时设置
+
 对于基于Unix的系统（如Ubuntu或MacOS），你可以在终端中运行以下命令：
 
 ```bash
-export OPENAI_API_KEY='你的-api-key'
+export OPENAI_API_KEY='your_api_key'
 ```
 
 对于Windows，你可以在命令提示符中使用以下命令：
